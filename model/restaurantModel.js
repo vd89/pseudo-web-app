@@ -25,6 +25,26 @@ class Restaurant {
 			throw err;
 		}
 	}
+	static async searchByAllField(options = {}) {
+		try {
+			const userQuery = {
+				$or: [
+					{ Name: { $regex: options.q, $options: 'i' } },
+					{ Area: { $regex: options.q, $options: 'i' } },
+					{ Address: { $regex: options.q, $options: 'i' } },
+					{ Category: { $regex: options.q, $options: 'i' } },
+				],
+			};
+
+			return this.aggregate([
+				{ $match: userQuery },
+				{ $sort: { Name: 1 } },
+				{ $skip: (options.page - 1) * options.limit },
+			]);
+		} catch (err) {
+			throw err;
+		}
+	}
 }
 restaurantSchema.loadClass(Restaurant);
 

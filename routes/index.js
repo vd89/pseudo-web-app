@@ -4,5 +4,5 @@ const router = Express.Router();
 
 // Get all data
 router.get('/', controller.getAllData);
-
+router.post('/', controller.searchBy);
 export default router;
