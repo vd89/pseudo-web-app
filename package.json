@@ -1,0 +1,24 @@
+{
+	"name": "pseudo-web-app",
+	"version": "1.0.0",
+	"description": "Restaurant search app for users using MERN stack ",
+	"main": "index.js",
+	"repository": "git@github.com:vd89/pseudo-web-app.git",
+	"author": "vd89 <dixitvora@gmail.com>",
+	"license": "MIT",
+	"private": false,
+	"type": "module",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"mongoose": "^5.10.2",
+		"morgan": "^1.10.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
+	},
+	"scripts": {
+		"dev": "nodemon .",
+		"start": "node ."
+	}
+}
