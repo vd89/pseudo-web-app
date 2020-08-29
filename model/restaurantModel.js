@@ -13,4 +13,19 @@ const restaurantSchema = new Schema({
 	Phone: { type: String },
 });
 
+class Restaurant {
+	static async getAllDataFromModel(options = {}) {
+		try {
+			return this.aggregate([
+				{ $sort: { Name: 1 } },
+				{ $skip: (options.page - 1) * options.limit },
+				{ $limit: options.limit },
+			]);
+		} catch (err) {
+			throw err;
+		}
+	}
+}
+restaurantSchema.loadClass(Restaurant);
+
 export default model('restaurant', restaurantSchema);
