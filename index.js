@@ -16,13 +16,15 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
+app.use(Express.static('client/build'));
+
 // deploy static files
-if (process.env.NODE_ENV == 'production') {
-	app.use(Express.static('client/build'));
-	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-	});
-}
+// if (process.env.NODE_ENV == 'production') {
+// 	app.use(Express.static('client/build'));
+// 	app.get('*', (req, res) => {
+// 		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+// 	});
+// }
 
 //Load Router
 app.use('/api/', route);
