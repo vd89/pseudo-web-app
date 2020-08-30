@@ -5925,7 +5925,7 @@ a.badge-dark.focus {
 	margin-bottom: 2rem;
 
 	height: 400px;
-	background-image: url('/img/pw_pizza_home_hero.png');
+	background-image: url('./img/pw_pizza_home_hero.png');
 	background-repeat: round;
 	border-radius: 0.3rem;
 	image-resolution: 100%;
