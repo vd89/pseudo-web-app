@@ -36,11 +36,14 @@ class Restaurant {
 				],
 			};
 
-			return this.aggregate([
-				{ $match: userQuery },
-				{ $sort: { Name: 1 } },
-				{ $skip: (options.page - 1) * options.limit },
-			]);
+			// return this.aggregate([
+			// 	{ $match: userQuery },
+			// 	{ $sort: { Name: 1 } },
+			// 	{ $skip: (options.page - 1) * options.limit },
+			// ]);
+			return this.find(userQuery)
+				.sort({ Name: 1 })
+				.skip((options.page - 1) * options.limit);
 		} catch (err) {
 			throw err;
 		}

@@ -4,7 +4,8 @@ export default {
 	// Get all data from data Base
 	getAllData: async (req, res) => {
 		try {
-			const { page, limit } = req.body;
+			let page = 1;
+			let limit = 24;
 			const options = {
 				page,
 				limit,
@@ -25,11 +26,23 @@ export default {
 			let results = [];
 			results = await Restaurant.searchByAllField(options);
 			let total = results.length;
-			const regex = new RegExp(f, 'gi');
-			const filterResult = results.filter((result) => result.Category.match(regex));
-			total = filterResult.length;
+			if (f) {
+				const regex = new RegExp(f, 'gi');
+				results = results.filter((result) => result.Category.match(regex));
+				total = results.length;
+				return res.status(200).json({
+					data: {
+						msg: true,
+						page,
+						limit,
+						total,
+						totalPages: Math.ceil(total / limit),
+						results,
+					},
+				});
+			}
 			return res.status(200).json({
-				data: { msg: true, page, limit, total, totalPages: Math.ceil(total / limit), filterResult },
+				data: { msg: true, page, limit, total, totalPages: Math.ceil(total / limit), results },
 			});
 		} catch (err) {
 			return res.status(500).json({ data: { msg: false, error: err } });
