@@ -21,15 +21,15 @@ export default {
 	},
 	searchBy: async (req, res) => {
 		try {
-			const { page, limit, q, f } = req.body;
+			const { page, limit, q, f } = req.query;
 			const options = { page, limit, q };
-			let results = [];
-			results = await Restaurant.searchByAllField(options);
-			let total = results.length;
+			let result = [];
+			result = await Restaurant.searchByAllField(options);
+			let total = result.length;
 			if (f) {
 				const regex = new RegExp(f, 'gi');
-				results = results.filter((result) => result.Category.match(regex));
-				total = results.length;
+				result = result.filter((result) => result.Category.match(regex));
+				total = result.length;
 				return res.status(200).json({
 					data: {
 						msg: true,
@@ -37,12 +37,12 @@ export default {
 						limit,
 						total,
 						totalPages: Math.ceil(total / limit),
-						results,
+						result,
 					},
 				});
 			}
 			return res.status(200).json({
-				data: { msg: true, page, limit, total, totalPages: Math.ceil(total / limit), results },
+				data: { msg: true, page, limit, total, totalPages: Math.ceil(total / limit), result },
 			});
 		} catch (err) {
 			return res.status(500).json({ data: { msg: false, error: err } });

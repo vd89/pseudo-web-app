@@ -4,5 +4,5 @@ const router = Express.Router();
 
 // Get all data
 router.get('/', controller.getAllData); // http://localhost:5000/api
-router.post('/', controller.searchBy);
+router.get('/search', controller.searchBy);
 export default router;
