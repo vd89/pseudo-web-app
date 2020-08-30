@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import RestaurantContext from '../Context/RestaurantContext';
 
 function FilterBy() {
+	const [text, setText] = useState('');
+	const restaurantContext = useContext(RestaurantContext);
+	const { text1, setText1, filterRestaurant } = restaurantContext;
+	const onChangeHandler = (e) => {
+		setText(e.target.value);
+	};
+	const onSubmitHandler = (e) => {
+		e.preventDefault();
+		filterRestaurant(text1, text);
+		setText('');
+	};
 	return (
 		<div>
-			<form action='' id='filterForm'>
+			<form onSubmit={onSubmitHandler}>
 				<h1>Filter section</h1>
 				<div className='input-group mb-3'>
 					<input
 						type='text'
 						className='form-control'
-						id='filterCousins'
+						value={text}
+						onChange={onChangeHandler}
 						placeholder='Filter by Cousins'
 					/>
 					<div className='input-group-append'>
