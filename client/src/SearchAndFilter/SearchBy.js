@@ -15,14 +15,14 @@ const SearchBy = () => {
 	return (
 		<div>
 			<form onSubmit={onSubmitHandler}>
-				<h1>Filter section</h1>
+				<h1>Search By </h1>
 				<div className='input-group mb-3'>
 					<input
 						type='text'
 						className='form-control'
 						value={text1}
 						onChange={onChangeHandler}
-						placeholder='Filter by Cousins'
+						placeholder='Search By '
 					/>
 					<div className='input-group-append'>
 						<button className='btn btn-outline-primary' type='submit' id='button-addon2'>

@@ -7,7 +7,6 @@ import {
 } from '../types';
 
 export default (state, action) => {
-	console.log('Action->', action);
 	switch (action.type) {
 		case ALL_RESTAURANTS:
 			return {

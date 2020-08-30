@@ -4,7 +4,7 @@ import RestaurantContext from '../Context/RestaurantContext';
 function FilterBy() {
 	const [text, setText] = useState('');
 	const restaurantContext = useContext(RestaurantContext);
-	const { text1, setText1, filterRestaurant } = restaurantContext;
+	const { text1, filterRestaurant } = restaurantContext;
 	const onChangeHandler = (e) => {
 		setText(e.target.value);
 	};
@@ -16,14 +16,14 @@ function FilterBy() {
 	return (
 		<div>
 			<form onSubmit={onSubmitHandler}>
-				<h1>Filter section</h1>
+				<h1>Filter by </h1>
 				<div className='input-group mb-3'>
 					<input
 						type='text'
 						className='form-control'
 						value={text}
 						onChange={onChangeHandler}
-						placeholder='Filter by Cousins'
+						placeholder='Filter by cuisines'
 					/>
 					<div className='input-group-append'>
 						<button className='btn btn-outline-primary' type='submit' id='button-addon2'>

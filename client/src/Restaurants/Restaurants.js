@@ -18,8 +18,8 @@ function Restaurants() {
 			<div className='m-5'>
 				<div id='outputData'>
 					<div className='row'>
-						{restaurants.map((restaurant) => (
-							<Restaurant key={restaurant.id} restaurant={restaurant} />
+						{restaurants.map((restaurant, key) => (
+							<Restaurant key={key} restaurant={restaurant} />
 						))}
 					</div>
 				</div>
