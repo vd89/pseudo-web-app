@@ -2,6 +2,7 @@ import Express from 'express';
 import http from 'http';
 import morgan from 'morgan';
 import cors from 'cors';
+import path from 'path';
 
 import config from './config/default.js';
 import dbController from './db/dbController.js';
@@ -15,6 +16,9 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
+// deploy static files
+app.use(Express.static('client/build'));
+
 //Load Router
 app.use('/api/', route);
 
@@ -22,7 +26,7 @@ app.use('/api/', route);
 dbController();
 
 // Server connection`
-const port = config.port;
+const port = process.env.PORT || 5000;
 server.listen(port, (err) => {
 	if (err) {
 		console.log(err);
