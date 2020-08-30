@@ -13,6 +13,12 @@ function Restaurants() {
 
 	if (loading) {
 		return <Spinner />;
+	} else if (restaurants.length === 0) {
+		return (
+			<div className='container center'>
+				<h3>No restaurant found please search again</h3>
+			</div>
+		);
 	} else {
 		return (
 			<div className='m-5'>

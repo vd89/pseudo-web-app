@@ -28,7 +28,7 @@ const RestaurantState = (props) => {
 	// All Restaurants
 	const allRestaurants = async () => {
 		setLoading();
-		const res = await Axios.get('http://localhost:5000/api');
+		const res = await Axios.get('/api');
 		dispatch({
 			type: ALL_RESTAURANTS,
 			payload: res.data,
@@ -37,7 +37,7 @@ const RestaurantState = (props) => {
 
 	const searchRestaurant = async (text) => {
 		setLoading();
-		const res = await Axios.get('http://localhost:5000/api/search', {
+		const res = await Axios.get('/api/search', {
 			params: {
 				page: 1,
 				limit: 24,
@@ -59,7 +59,7 @@ const RestaurantState = (props) => {
 
 	const filterRestaurant = async (text, text2) => {
 		setLoading();
-		const res = await Axios.get('http://localhost:5000/api/search', {
+		const res = await Axios.get('/api/search', {
 			params: {
 				page: 1,
 				limit: 24,
