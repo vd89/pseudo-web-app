@@ -5,7 +5,7 @@ export default {
 	getAllData: async (req, res) => {
 		try {
 			let page = 1;
-			let limit = 24;
+			let limit = 100;
 			const options = {
 				page,
 				limit,
